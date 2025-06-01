@@ -1,0 +1,28 @@
+[gd_scene load_steps=6 format=3 uid="uid://bwnwpvri7l4w1"]
+
+[ext_resource type="Script" uid="uid://bqyrh4r7c8y7l" path="res://scripts/ship.gd" id="1"]
+[ext_resource type="Texture2D" uid="uid://k7eiegj22pru" path="res://recursos/ship.png" id="2_4cq66"]
+[ext_resource type="Shader" uid="uid://bagkquwa4b8hl" path="res://shaders/ship.gdshader" id="2_v4325"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_v4325"]
+shader = ExtResource("2_v4325")
+shader_parameter/outline_size = 10.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4cq66"]
+size = Vector2(92, 94)
+
+[node name="Ship" type="Node2D"]
+script = ExtResource("1")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_v4325")
+instance_shader_parameters/outline_color = Color(1, 0, 0, 1)
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("2_4cq66")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_4cq66")
+
+[connection signal="input_event" from="Area2D" to="." method="_on_area_2d_input_event"]
