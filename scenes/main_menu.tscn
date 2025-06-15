@@ -1,0 +1,75 @@
+[gd_scene load_steps=4 format=3 uid="uid://bo7hjnlrmhcbs"]
+
+[ext_resource type="Theme" uid="uid://n5h6w1cwvgph" path="res://Themes/space_theme.tres" id="1_ekxnf"]
+[ext_resource type="FontFile" uid="uid://c7mgee0bs2r37" path="res://recursos/fonts/Orbitracer.otf" id="2_bqqt6"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_wu84c"]
+font = ExtResource("2_bqqt6")
+font_size = 64
+font_color = Color(0.2772, 0.77, 0.515387, 1)
+outline_size = 5
+outline_color = Color(0.257097, 0.0782, 0.34, 1)
+
+[node name="MainMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource("1_ekxnf")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 60
+theme_override_constants/margin_top = 60
+theme_override_constants/margin_right = 60
+theme_override_constants/margin_bottom = 60
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_top = 60
+theme_override_constants/margin_bottom = 60
+
+[node name="Titulo" type="Label" parent="MarginContainer/VBoxContainer/MarginContainer"]
+layout_mode = 2
+text = "Space Tactics"
+label_settings = SubResource("LabelSettings_wu84c")
+horizontal_alignment = 1
+
+[node name="Menu" type="VBoxContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="ContinueCampaign" type="Button" parent="MarginContainer/VBoxContainer/Menu"]
+layout_mode = 2
+disabled = true
+text = "Continue campaign"
+
+[node name="NewCampaign" type="Button" parent="MarginContainer/VBoxContainer/Menu"]
+layout_mode = 2
+disabled = true
+text = "New campaign"
+
+[node name="NewSkirmish" type="Button" parent="MarginContainer/VBoxContainer/Menu"]
+layout_mode = 2
+text = "New skirmish"
+
+[node name="LoadGame" type="Button" parent="MarginContainer/VBoxContainer/Menu"]
+layout_mode = 2
+disabled = true
+text = "Load game"
+
+[node name="Exit" type="Button" parent="MarginContainer/VBoxContainer/Menu"]
+layout_mode = 2
+text = "Exit"

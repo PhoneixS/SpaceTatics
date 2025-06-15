@@ -1,0 +1,6 @@
+[gd_resource type="Theme" load_steps=2 format=3 uid="uid://n5h6w1cwvgph"]
+
+[ext_resource type="FontFile" uid="uid://c7mgee0bs2r37" path="res://recursos/fonts/Orbitracer.otf" id="1_twr1t"]
+
+[resource]
+default_font = ExtResource("1_twr1t")
