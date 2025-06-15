@@ -4,7 +4,7 @@ A personal proyect for making a game os space tatical battles like the old Maste
 
 <div align="center">
   <a href="https://github.com/PhoneixS/SpaceTatics">
-    <img src="recursos/logo.png" alt="Logo" width="80" height="80">
+	<img src="recursos/logo.png" alt="Logo" width="80" height="80">
   </a>
 </div>
 
@@ -51,10 +51,10 @@ command to run if program contains helper info
 
 WIP.
 * 0.2
-    * Various bug fixes and optimizations
-    * See [commit change]() or See [release history]()
+	* Various bug fixes and optimizations
+	* See [commit change]() or See [release history]()
 * 0.1
-    * Initial Release
+	* Initial Release
 
 ## License
 
