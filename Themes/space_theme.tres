@@ -4,3 +4,7 @@
 
 [resource]
 default_font = ExtResource("1_twr1t")
+MarginContainer/constants/margin_bottom = 60
+MarginContainer/constants/margin_left = 60
+MarginContainer/constants/margin_right = 60
+MarginContainer/constants/margin_top = 60

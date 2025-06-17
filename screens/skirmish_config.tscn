@@ -1,0 +1,105 @@
+[gd_scene load_steps=2 format=3 uid="uid://b5d411xwusfpb"]
+
+[ext_resource type="Script" uid="uid://cmxigfg86ww8v" path="res://scripts/skirmish_config.gd" id="1_c3gmr"]
+
+[node name="SkirmishConfig" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_c3gmr")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 33
+text = "Configuration of skirmish battle"
+horizontal_alignment = 1
+
+[node name="GridContainer" type="GridContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+columns = 3
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/GridContainer"]
+layout_mode = 2
+text = "Enable"
+
+[node name="Label2" type="Label" parent="MarginContainer/VBoxContainer/GridContainer"]
+layout_mode = 2
+text = "Player name"
+
+[node name="Label3" type="Label" parent="MarginContainer/VBoxContainer/GridContainer"]
+layout_mode = 2
+text = "Species"
+
+[node name="CheckBox1" type="CheckBox" parent="MarginContainer/VBoxContainer/GridContainer"]
+layout_mode = 2
+button_pressed = true
+
+[node name="TextEdit1" type="TextEdit" parent="MarginContainer/VBoxContainer/GridContainer"]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+text = "Jugador 1"
+
+[node name="MenuButton1" type="OptionButton" parent="MarginContainer/VBoxContainer/GridContainer"]
+layout_mode = 2
+item_count = 2
+popup/item_0/text = "Homo Sapiens"
+popup/item_0/id = 0
+popup/item_1/text = "Vitrum Mobilis"
+popup/item_1/id = 1
+
+[node name="CheckBox2" type="CheckBox" parent="MarginContainer/VBoxContainer/GridContainer"]
+layout_mode = 2
+button_pressed = true
+
+[node name="TextEdit2" type="TextEdit" parent="MarginContainer/VBoxContainer/GridContainer"]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+text = "Jugador 2"
+
+[node name="MenuButton2" type="OptionButton" parent="MarginContainer/VBoxContainer/GridContainer"]
+layout_mode = 2
+item_count = 2
+popup/item_0/text = "Homo Sapiens"
+popup/item_0/id = 0
+popup/item_1/text = "Vitrum Mobilis"
+popup/item_1/id = 1
+
+[node name="CheckBox3" type="CheckBox" parent="MarginContainer/VBoxContainer/GridContainer"]
+layout_mode = 2
+disabled = true
+
+[node name="TextEdit3" type="TextEdit" parent="MarginContainer/VBoxContainer/GridContainer"]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+text = "Jugador 3"
+editable = false
+
+[node name="MenuButton3" type="OptionButton" parent="MarginContainer/VBoxContainer/GridContainer"]
+layout_mode = 2
+disabled = true
+item_count = 2
+popup/item_0/text = "Homo Sapiens"
+popup/item_0/id = 0
+popup/item_1/text = "Vitrum Mobilis"
+popup/item_1/id = 1
+
+[node name="StartSkirmish" type="Button" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Start skirmish"
+
+[connection signal="pressed" from="MarginContainer/VBoxContainer/StartSkirmish" to="." method="_on_start_skirmish_pressed"]

@@ -1,10 +1,11 @@
-[gd_scene load_steps=4 format=3 uid="uid://bo7hjnlrmhcbs"]
+[gd_scene load_steps=5 format=3 uid="uid://bo7hjnlrmhcbs"]
 
-[ext_resource type="Theme" uid="uid://n5h6w1cwvgph" path="res://Themes/space_theme.tres" id="1_ekxnf"]
-[ext_resource type="FontFile" uid="uid://c7mgee0bs2r37" path="res://recursos/fonts/Orbitracer.otf" id="2_bqqt6"]
+[ext_resource type="Script" uid="uid://do6kwjhmp26yh" path="res://scripts/new_skirmish.gd" id="2_p3cyw"]
+[ext_resource type="FontFile" uid="uid://c7mgee0bs2r37" path="res://recursos/fonts/Orbitracer.otf" id="2_t3bh0"]
+[ext_resource type="Script" uid="uid://bf4tjydogmwry" path="res://scripts/exit.gd" id="3_t3bh0"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_wu84c"]
-font = ExtResource("2_bqqt6")
+font = ExtResource("2_t3bh0")
 font_size = 64
 font_color = Color(0.2772, 0.77, 0.515387, 1)
 outline_size = 5
@@ -19,7 +20,6 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-theme = ExtResource("1_ekxnf")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 1
@@ -28,10 +28,6 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/margin_left = 60
-theme_override_constants/margin_top = 60
-theme_override_constants/margin_right = 60
-theme_override_constants/margin_bottom = 60
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
 layout_mode = 2
@@ -64,6 +60,7 @@ text = "New campaign"
 [node name="NewSkirmish" type="Button" parent="MarginContainer/VBoxContainer/Menu"]
 layout_mode = 2
 text = "New skirmish"
+script = ExtResource("2_p3cyw")
 
 [node name="LoadGame" type="Button" parent="MarginContainer/VBoxContainer/Menu"]
 layout_mode = 2
@@ -73,3 +70,7 @@ text = "Load game"
 [node name="Exit" type="Button" parent="MarginContainer/VBoxContainer/Menu"]
 layout_mode = 2
 text = "Exit"
+script = ExtResource("3_t3bh0")
+
+[connection signal="pressed" from="MarginContainer/VBoxContainer/Menu/NewSkirmish" to="MarginContainer/VBoxContainer/Menu/NewSkirmish" method="_on_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/Menu/Exit" to="MarginContainer/VBoxContainer/Menu/Exit" method="_on_pressed"]

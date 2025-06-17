@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="SpaceTactics"
-run/main_scene="uid://bwjtf70gj5jcp"
+run/main_scene="uid://bo7hjnlrmhcbs"
 config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="res://icon.svg"
 
@@ -26,6 +26,10 @@ gdscript/warnings/unsafe_method_access=1
 version_control/plugin_name="GitPlugin"
 version_control/autoload_on_startup=true
 
+[gui]
+
+theme/custom="uid://n5h6w1cwvgph"
+
 [input]
 
 select_ship={
@@ -38,7 +42,3 @@ move_ship={
 "events": [Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"button_mask":0,"position":Vector2(0, 0),"global_position":Vector2(0, 0),"factor":1.0,"button_index":2,"canceled":false,"pressed":false,"double_click":false,"script":null)
 ]
 }
-
-[rendering]
-
-environment/defaults/default_clear_color=Color(0.144063, 0.144063, 0.144063, 1)
