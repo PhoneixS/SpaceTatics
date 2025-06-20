@@ -13,7 +13,11 @@ func _update_active_player() -> void:
 	for i in range(self.players.size()):
 		self.players[i].active_turn = (i == current_player_idx)
 
+func get_current_player() -> Player:
+	return self.players[self.current_player_idx]
 
 func end_turn() -> void:
 	current_player_idx = (current_player_idx + 1) % players.size()
-	
+
+func _on_ready() -> void:
+	self.register_players(SkirmisInfo.players_info)
