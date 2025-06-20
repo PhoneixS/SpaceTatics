@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://bwjtf70gj5jcp"]
 
-[ext_resource type="Script" uid="uid://cf3ls55rm640e" path="res://scripts/main.gd" id="1_g223i"]
+[ext_resource type="Script" uid="uid://cf3ls55rm640e" path="res://scripts/main_battle.gd" id="1_g223i"]
 [ext_resource type="PackedScene" uid="uid://c3e7tp3iagm06" path="res://elements/HUD.tscn" id="2_oedaw"]
 [ext_resource type="Script" uid="uid://ckvnemonu1efh" path="res://scripts/turn_manager.gd" id="2_yxtji"]
 [ext_resource type="PackedScene" uid="uid://bwnwpvri7l4w1" path="res://elements/ship.tscn" id="3_oedaw"]
@@ -26,3 +26,4 @@ position = Vector2(-7, -17)
 position = Vector2(579, 323)
 
 [connection signal="ready" from="TurnManager" to="TurnManager" method="_on_ready"]
+[connection signal="turn_ended" from="Hud" to="." method="_on_turn_ended"]

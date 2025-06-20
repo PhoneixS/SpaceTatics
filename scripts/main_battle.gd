@@ -6,3 +6,6 @@ func _ready() -> void:
 	
 	var players : Array[Player] = SkirmisInfo.players_info
 	players[0].register_ships(ships)
+
+func _on_turn_ended() -> void:
+	$TurnManager.end_turn()
