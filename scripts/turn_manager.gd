@@ -6,24 +6,35 @@ var current_player_idx = 0
 
 signal player_changed(oldPlayer: Player, newPlayer: Player, newIdx: int)
 
-func register_players(new_players: Array[Player]) -> void:
+func _initialize_players(new_players: Array[Player]) -> void:
 	self.players = new_players
 	current_player_idx = 0
 	_update_active_player()
 
 func _update_active_player() -> void:
 	for i in range(self.players.size()):
-		self.players[i].active_turn = (i == current_player_idx)
+		if i == current_player_idx:
+			self.players[i].start_turn()
+		else:
+			self.players[i].end_turn()
 
 func get_current_player() -> Player:
 	return self.players[self.current_player_idx]
 
 func end_turn() -> void:
+	# Who was before
 	var oldPlayer = self.players[current_player_idx]
+	# Disable its ships
+	oldPlayer.end_turn()
+	# Who is the current player
 	current_player_idx = (current_player_idx + 1) % players.size()
+	var newPlayer = self.players[current_player_idx]
+	# Enable its first ship.
+	newPlayer.start_turn()
 	self.player_changed.emit(oldPlayer, self.players[current_player_idx], current_player_idx)
 
 func _on_ready() -> void:
-	self.register_players(SkirmisInfo.players_info)
+	self._initialize_players(SkirmisInfo.players_info)
+	# Connect the turn ended event.
 	for player in self.players:
-		player.turn_ended.connect(end_turn)
+		player.turn_ended.connect(self.end_turn)

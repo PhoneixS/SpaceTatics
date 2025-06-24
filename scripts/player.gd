@@ -19,10 +19,20 @@ func _update_active_ship() -> void:
 		ships[i].active_turn = (i == current_index)
 
 func end_current_ship_turn() -> void:
-	current_index += 1
-	if (current_index >= ships.size()):
-		current_index = -1
-		_update_active_ship()
+	self.current_index += 1
+	if (self.current_index >= self.ships.size()):
+		self.current_index = -1
+		self._update_active_ship()
 		self.turn_ended.emit()
 	else:
-		_update_active_ship()
+		self._update_active_ship()
+
+func end_turn() -> void:
+	self.active_turn = false
+	for ship in self.ships:
+		ship.active_turn = false
+
+func start_turn() -> void:
+	self.active_turn = true
+	self.current_index = 0
+	self._update_active_ship()
