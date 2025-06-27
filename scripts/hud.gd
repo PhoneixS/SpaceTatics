@@ -14,4 +14,4 @@ func _on_end_turn_pressed() -> void:
 	self.turn_ended.emit()
 
 func _on_turn_manager_player_changed(oldPlayer: Player, newPlayer: Player, idx: int) -> void:
-	($MarginContainer/HBTop/PlayerNick as Label).text = newPlayer.nick
+	($MarginContainer/HBTop/PlayerNick as Label).text = newPlayer.nick + "-" + str(newPlayer.species)

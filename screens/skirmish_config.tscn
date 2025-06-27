@@ -55,11 +55,14 @@ text = "Jugador 1"
 
 [node name="MenuButton1" type="OptionButton" parent="MarginContainer/VBoxContainer/GridContainer"]
 layout_mode = 2
-item_count = 2
-popup/item_0/text = "Homo Sapiens"
-popup/item_0/id = 0
-popup/item_1/text = "Vitrum Mobilis"
-popup/item_1/id = 1
+selected = 0
+item_count = 3
+popup/item_0/text = "Random"
+popup/item_0/id = 2
+popup/item_1/text = "Homo Sapiens"
+popup/item_1/id = 0
+popup/item_2/text = "Vitrum Mobilis"
+popup/item_2/id = 1
 
 [node name="CheckBox2" type="CheckBox" parent="MarginContainer/VBoxContainer/GridContainer"]
 layout_mode = 2
@@ -72,11 +75,14 @@ text = "Jugador 2"
 
 [node name="MenuButton2" type="OptionButton" parent="MarginContainer/VBoxContainer/GridContainer"]
 layout_mode = 2
-item_count = 2
-popup/item_0/text = "Homo Sapiens"
-popup/item_0/id = 0
-popup/item_1/text = "Vitrum Mobilis"
-popup/item_1/id = 1
+selected = 0
+item_count = 3
+popup/item_0/text = "Random"
+popup/item_0/id = 2
+popup/item_1/text = "Homo Sapiens"
+popup/item_1/id = 0
+popup/item_2/text = "Vitrum Mobilis"
+popup/item_2/id = 1
 
 [node name="CheckBox3" type="CheckBox" parent="MarginContainer/VBoxContainer/GridContainer"]
 layout_mode = 2

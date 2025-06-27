@@ -2,6 +2,7 @@ extends Node
 class_name Player
 
 var nick: String
+var species: int
 var active_turn:= false
 
 var ships: Array[Ship] = []
