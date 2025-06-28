@@ -1,9 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://bwjtf70gj5jcp"]
+[gd_scene load_steps=4 format=3 uid="uid://bwjtf70gj5jcp"]
 
 [ext_resource type="Script" uid="uid://cf3ls55rm640e" path="res://scripts/main_battle.gd" id="1_g223i"]
 [ext_resource type="PackedScene" uid="uid://c3e7tp3iagm06" path="res://elements/HUD.tscn" id="2_oedaw"]
 [ext_resource type="Script" uid="uid://ckvnemonu1efh" path="res://scripts/turn_manager.gd" id="2_yxtji"]
-[ext_resource type="PackedScene" uid="uid://bwnwpvri7l4w1" path="res://elements/ship.tscn" id="3_oedaw"]
 
 [node name="MainBattle" type="Node2D"]
 script = ExtResource("1_g223i")
@@ -12,15 +11,6 @@ script = ExtResource("1_g223i")
 script = ExtResource("2_yxtji")
 
 [node name="Hud" parent="." instance=ExtResource("2_oedaw")]
-
-[node name="Ship1" parent="." instance=ExtResource("3_oedaw")]
-position = Vector2(208, 214)
-
-[node name="Ship2" parent="." instance=ExtResource("3_oedaw")]
-position = Vector2(747, 355)
-
-[node name="Ship3" parent="." instance=ExtResource("3_oedaw")]
-position = Vector2(-7, -17)
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(579, 323)

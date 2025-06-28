@@ -32,6 +32,7 @@ func end_turn() -> void:
 	self.active_turn = false
 	for ship in self.ships:
 		ship.active_turn = false
+		ship.selected = false
 
 func start_turn() -> void:
 	self.active_turn = true
