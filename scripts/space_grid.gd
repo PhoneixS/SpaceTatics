@@ -6,6 +6,8 @@ var grid: Array[Node2D] = []
 var width: int = 0
 var height: int = 0
 
+@export var cell_size = Vector2(100, 100)
+
 func initialize(new_width: int, new_height: int) -> void:
 	self.width = new_width
 	self.height = new_height
@@ -28,21 +30,24 @@ func set_value(x: int, y: int, value: Ship) -> void:
 		self.add_child(value)
 
 func grid_to_global(grid_pos: Vector2) -> Vector2:
-	var size: Vector2 = ($CollisionShape2D.shape as RectangleShape2D).size
-	var new_pos: Vector2 = Vector2(grid_pos)
-	new_pos.x = new_pos.x * size[0] / self.width
-	new_pos.y = new_pos.y * size[1] / self.height
-	return new_pos
+	return grid_pos * cell_size
 
 func global_to_grid(global_pos: Vector2) -> Vector2:
-	var size: Vector2 = ($CollisionShape2D.shape as RectangleShape2D).size
 	var local: Vector2 = self.to_local(global_pos)
-	var grid_position: Vector2 = local/size
-	grid_position.x = int(grid_position.x * self.width)
-	grid_position.y = int(grid_position.y * self.height)
+	var grid_position: Vector2 = local/self.cell_size
+	grid_position.x = int(grid_position.x)
+	grid_position.y = int(grid_position.y)
 	return grid_position
 
 func move_ship(ship: Ship, new_position: Vector2) -> Vector2:
 	var grid_position: Vector2 = self.global_to_grid(new_position)
-	ship.position = self.grid_to_global(grid_position)
+	ship.position = self.grid_to_global(grid_position) + (self.cell_size / 2)
 	return ship.position
+
+func _draw() -> void:
+	
+	for x in self.width + 1:
+		draw_line(self.to_global(Vector2(x *  self.cell_size.x,0)), self.to_global(Vector2(x * self.cell_size.x, self.cell_size.y * self.height)), Color.AQUA)
+		
+	for y in self.height + 1:
+		draw_line(self.to_global(Vector2(0, y * self.cell_size.y)), self.to_global(Vector2(self.cell_size.x * self.width, y * self.cell_size.y)), Color.AQUA)

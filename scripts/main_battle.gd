@@ -6,7 +6,7 @@ func _ready() -> void:
 	var players: Array[Player] = SkirmisInfo.players_info
 	
 	var grid: SpaceGrid = preload("res://elements/space_grid.tscn").instantiate()
-	grid.initialize(100, 100)
+	grid.initialize(10, 10)
 	
 	var x: int = 0
 	var y: int = 0
