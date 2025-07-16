@@ -13,8 +13,10 @@ func _ready() -> void:
 	for player in players:
 		for ship in player.ships:
 			grid.set_value(x, y, ship)
+			grid.move_ship_to_grid(ship, Vector2(x, y))
 			x += 1
-			y += 1
+		y = grid.height - 1
+		x = 0
 	
 	self.add_child(grid)
 

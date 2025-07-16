@@ -30,7 +30,7 @@ horizontal_alignment = 1
 
 [node name="GridContainer" type="GridContainer" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
-columns = 3
+columns = 4
 
 [node name="Label" type="Label" parent="MarginContainer/VBoxContainer/GridContainer"]
 layout_mode = 2
@@ -43,6 +43,10 @@ text = "Player name"
 [node name="Label3" type="Label" parent="MarginContainer/VBoxContainer/GridContainer"]
 layout_mode = 2
 text = "Species"
+
+[node name="Label4" type="Label" parent="MarginContainer/VBoxContainer/GridContainer"]
+layout_mode = 2
+text = "Color"
 
 [node name="CheckBox1" type="CheckBox" parent="MarginContainer/VBoxContainer/GridContainer"]
 layout_mode = 2
@@ -64,6 +68,11 @@ popup/item_1/id = 0
 popup/item_2/text = "Vitrum Mobilis"
 popup/item_2/id = 1
 
+[node name="ColorPickerButton1" type="ColorPickerButton" parent="MarginContainer/VBoxContainer/GridContainer"]
+layout_mode = 2
+color = Color(1, 0, 0, 1)
+edit_alpha = false
+
 [node name="CheckBox2" type="CheckBox" parent="MarginContainer/VBoxContainer/GridContainer"]
 layout_mode = 2
 button_pressed = true
@@ -84,6 +93,11 @@ popup/item_1/id = 0
 popup/item_2/text = "Vitrum Mobilis"
 popup/item_2/id = 1
 
+[node name="ColorPickerButton2" type="ColorPickerButton" parent="MarginContainer/VBoxContainer/GridContainer"]
+layout_mode = 2
+color = Color(0, 0, 1, 1)
+edit_alpha = false
+
 [node name="CheckBox3" type="CheckBox" parent="MarginContainer/VBoxContainer/GridContainer"]
 layout_mode = 2
 disabled = true
@@ -102,6 +116,12 @@ popup/item_0/text = "Homo Sapiens"
 popup/item_0/id = 0
 popup/item_1/text = "Vitrum Mobilis"
 popup/item_1/id = 1
+
+[node name="ColorPickerButton3" type="ColorPickerButton" parent="MarginContainer/VBoxContainer/GridContainer"]
+layout_mode = 2
+disabled = true
+color = Color(0, 1, 0.15, 1)
+edit_alpha = false
 
 [node name="StartSkirmish" type="Button" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2

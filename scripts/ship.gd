@@ -12,6 +12,13 @@ var selected: bool:
 		_selected = value
 		($Sprite2D as Sprite2D).set_instance_shader_parameter("resaltar", _selected)
 
+@export var ship_color : Color:
+	set(value):
+		$ColorTag.modulate = value
+	
+	get():
+		return $ColorTag.modulate
+
 func _ready() -> void:
 	add_to_group("Ships")
 

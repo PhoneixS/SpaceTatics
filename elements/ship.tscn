@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://bwnwpvri7l4w1"]
+[gd_scene load_steps=7 format=3 uid="uid://bwnwpvri7l4w1"]
 
 [ext_resource type="Script" uid="uid://bqyrh4r7c8y7l" path="res://scripts/ship.gd" id="1"]
 [ext_resource type="Texture2D" uid="uid://k7eiegj22pru" path="res://recursos/ship.png" id="2_4cq66"]
 [ext_resource type="Shader" uid="uid://bagkquwa4b8hl" path="res://shaders/ship.gdshader" id="2_v4325"]
+[ext_resource type="Texture2D" uid="uid://cunfrin5e3jhd" path="res://recursos/ship_color_mask.png" id="4_gjh3g"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_v4325"]
 shader = ExtResource("2_v4325")
@@ -19,6 +20,11 @@ material = SubResource("ShaderMaterial_v4325")
 instance_shader_parameters/outline_color = Color(1, 0, 0, 1)
 scale = Vector2(0.1, 0.1)
 texture = ExtResource("2_4cq66")
+
+[node name="ColorTag" type="Sprite2D" parent="."]
+modulate = Color(0.05, 1, 0.414167, 1)
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("4_gjh3g")
 
 [node name="Area2D" type="Area2D" parent="."]
 
