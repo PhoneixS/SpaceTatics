@@ -39,13 +39,18 @@ func global_to_grid(global_pos: Vector2) -> Vector2:
 	grid_position.y = int(grid_position.y)
 	return grid_position
 
-func move_ship(ship: Ship, new_position: Vector2) -> Vector2:
+func move_ship(ship: Ship, new_position: Vector2, interpolate: bool = false) -> Vector2:
 	var grid_position: Vector2 = self.global_to_grid(new_position)
-	return self.move_ship_to_grid(ship, grid_position)
+	return self.move_ship_to_grid(ship, grid_position, interpolate)
 	
-func move_ship_to_grid(ship: Ship, grid_position: Vector2) -> Vector2:
-	ship.position = self.grid_to_global(grid_position) + (self.cell_size / 2)
-	return ship.position
+func move_ship_to_grid(ship: Ship, grid_position: Vector2, interpolate: bool = false) -> Vector2:
+	var value =  self.grid_to_global(grid_position) + (self.cell_size / 2)
+	if interpolate:
+		ship.destination = value
+	else:
+		ship.position = value
+		ship.destination = value
+	return value
 
 func _draw() -> void:
 	
