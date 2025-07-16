@@ -22,6 +22,10 @@ size_flags_vertical = 0
 layout_mode = 2
 text = "Player Name"
 
+[node name="PlayerColor" type="ColorRect" parent="MarginContainer/HBTop"]
+custom_minimum_size = Vector2(17, 0)
+layout_mode = 2
+
 [node name="HBBotton" type="HBoxContainer" parent="MarginContainer"]
 layout_mode = 2
 size_flags_vertical = 8
