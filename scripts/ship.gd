@@ -11,7 +11,9 @@ var selected: bool:
 		return self._selected
 	set(value):
 		_selected = value
-		($Sprite2D as Sprite2D).set_instance_shader_parameter("resaltar", _selected)
+		var spriteResaltado := ($Sprite2D as Sprite2D)
+		spriteResaltado.set_instance_shader_parameter("resaltar", _selected)
+		spriteResaltado.set_instance_shader_parameter("outline_color", ship_color)
 
 @export var ship_color : Color:
 	set(value):
