@@ -48,6 +48,7 @@ func _physics_process(delta: float) -> void:
 			self.position = self.destination
 			self.original_position = self.position
 			self.move_animation_progress = 0
+			self.space_grid.queue_redraw()
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("move_ship") and self.selected:
