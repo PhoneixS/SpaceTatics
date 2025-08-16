@@ -9,6 +9,9 @@ var _selected := false
 var space_grid: SpaceGrid
 var destination: Vector2
 var max_distance := 3
+var original_position: Vector2
+var move_animation_speed := 1.0
+var move_animation_progress := 0.0
 
 var selected: bool:
 	get():
@@ -34,13 +37,17 @@ func is_valid_move(grid_destination: Vector2) -> bool:
 	return (grid_destination - self.space_grid.global_to_grid(self.destination)).length() <= self.max_distance
 
 func _ready() -> void:
+	self.original_position = self.position
 	add_to_group("Ships")
 
 func _physics_process(delta: float) -> void:
 	if !self.position.is_equal_approx(self.destination):
-		self.position = lerp(self.position, self.destination, delta)
+		self.move_animation_progress += delta * self.move_animation_speed
+		self.position = lerp(self.original_position, self.destination, self.move_animation_progress)
 		if self.position.is_equal_approx(self.destination):
 			self.position = self.destination
+			self.original_position = self.position
+			self.move_animation_progress = 0
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("move_ship") and self.selected:
