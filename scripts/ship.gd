@@ -17,10 +17,10 @@ var selected: bool:
 
 @export var ship_color : Color:
 	set(value):
-		$ColorTag.modulate = value
+		($ColorTag as Sprite2D).modulate = value
 	
 	get():
-		return $ColorTag.modulate
+		return ($ColorTag as Sprite2D).modulate
 
 func _ready() -> void:
 	add_to_group("Ships")
