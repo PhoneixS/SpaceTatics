@@ -2,11 +2,19 @@ extends Area2D
 
 class_name SpaceGrid
 
+var _selected_ship: Ship = null
 var grid: Array[Node2D] = []
 var width: int = 0
 var height: int = 0
 
-@export var cell_size = Vector2(100, 100)
+@export var cell_size := Vector2(100, 100)
+
+var selected_ship: Ship:
+	get():
+		return self._selected_ship
+	set(new_ship):
+		self._selected_ship = new_ship
+		self.queue_redraw()
 
 func initialize(new_width: int, new_height: int) -> void:
 	self.width = new_width
@@ -44,7 +52,7 @@ func move_ship(ship: Ship, new_position: Vector2, interpolate: bool = false) -> 
 	return self.move_ship_to_grid(ship, grid_position, interpolate)
 	
 func move_ship_to_grid(ship: Ship, grid_position: Vector2, interpolate: bool = false) -> Vector2:
-	var value =  self.grid_to_global(grid_position) + (self.cell_size / 2)
+	var value: Vector2 =  self.grid_to_global(grid_position) + (self.cell_size / 2)
 	if interpolate:
 		ship.destination = value
 	else:
@@ -53,9 +61,17 @@ func move_ship_to_grid(ship: Ship, grid_position: Vector2, interpolate: bool = f
 	return value
 
 func _draw() -> void:
+
+	if self._selected_ship != null:
+		for x in self.width:
+			for y in self.height:
+				var grid_pos := Vector2(x, y)
+				if self._selected_ship.is_valid_move(grid_pos):
+					draw_rect(Rect2(self.grid_to_global(grid_pos), self.cell_size), Color(Color.DARK_GREEN, 0.5))
 	
 	for x in self.width + 1:
 		draw_line(self.to_global(Vector2(x *  self.cell_size.x,0)), self.to_global(Vector2(x * self.cell_size.x, self.cell_size.y * self.height)), Color.AQUA)
 		
 	for y in self.height + 1:
 		draw_line(self.to_global(Vector2(0, y * self.cell_size.y)), self.to_global(Vector2(self.cell_size.x * self.width, y * self.cell_size.y)), Color.AQUA)
+		

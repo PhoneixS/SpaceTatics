@@ -1,15 +1,23 @@
 extends Node2D
 class_name  Ship
 
+signal ship_selected()
+signal ship_deselected()
+
 var active_turn := false
 var _selected := false
 var space_grid: SpaceGrid
 var destination: Vector2
+var max_distance := 3
 
 var selected: bool:
 	get():
 		return self._selected
 	set(value):
+		if value:
+			ship_selected.emit()
+		elif _selected:
+			ship_deselected.emit()
 		_selected = value
 		var spriteResaltado := ($Sprite2D as Sprite2D)
 		spriteResaltado.set_instance_shader_parameter("resaltar", _selected)
@@ -22,6 +30,9 @@ var selected: bool:
 	get():
 		return ($ColorTag as Sprite2D).modulate
 
+func is_valid_move(grid_destination: Vector2) -> bool:
+	return (grid_destination - self.space_grid.global_to_grid(self.destination)).length() <= self.max_distance
+
 func _ready() -> void:
 	add_to_group("Ships")
 
@@ -33,7 +44,9 @@ func _physics_process(delta: float) -> void:
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("move_ship") and self.selected:
-		self.space_grid.move_ship(self, get_global_mouse_position(), true)
+		var grid_destination := self.space_grid.global_to_grid(get_global_mouse_position())
+		if self.is_valid_move(grid_destination):
+			self.space_grid.move_ship(self, get_global_mouse_position(), true)
 
 func _on_area_2d_input_event(_viewport: Node, event: InputEvent, _shape_idx: int) -> void:
 	if not active_turn:
@@ -41,3 +54,10 @@ func _on_area_2d_input_event(_viewport: Node, event: InputEvent, _shape_idx: int
 
 	if event.is_action_pressed("select_ship"):
 		self.selected = not self.selected
+
+func _on_ship_selected() -> void:
+	self.space_grid.selected_ship = self
+
+func _on_ship_deselected() -> void:
+	if self.space_grid.selected_ship == self:
+		self.space_grid.selected_ship = null
