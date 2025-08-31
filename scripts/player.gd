@@ -38,4 +38,9 @@ func end_turn() -> void:
 func start_turn() -> void:
 	self.active_turn = true
 	self.current_index = 0
+	self.clean_movement()
 	self._update_active_ship()
+
+func clean_movement() -> void:
+	for ship in self.ships:
+		ship.consumed_distance = 0.0
