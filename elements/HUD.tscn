@@ -31,9 +31,14 @@ layout_mode = 2
 size_flags_vertical = 8
 alignment = 2
 
+[node name="NextShip" type="Button" parent="MarginContainer/HBBotton"]
+layout_mode = 2
+text = "Next ship"
+
 [node name="EndTurn" type="Button" parent="MarginContainer/HBBotton"]
 layout_mode = 2
 text = "End turn"
 
 [connection signal="ready" from="." to="." method="_on_ready"]
+[connection signal="pressed" from="MarginContainer/HBBotton/NextShip" to="." method="_on_next_ship_pressed"]
 [connection signal="pressed" from="MarginContainer/HBBotton/EndTurn" to="." method="_on_end_turn_pressed"]

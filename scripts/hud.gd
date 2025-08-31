@@ -2,16 +2,20 @@ extends CanvasLayer
 
 # Notifies that the user wants to end the current turn.
 signal turn_ended
+signal next_ship
 
 var turn_manager: TurnManager
 
-func _on_ready() -> void:
+func initialize_battle() -> void:
 	self.turn_manager = get_parent().get_node("TurnManager")
 	self._set_player_properties(self.turn_manager.get_current_player())
 	self.turn_manager.player_changed.connect(_on_turn_manager_player_changed)
 
 func _on_end_turn_pressed() -> void:
 	self.turn_ended.emit()
+
+func _on_next_ship_pressed() -> void:
+	self.next_ship.emit()
 
 func _on_turn_manager_player_changed(_oldPlayer: Player, newPlayer: Player, _idx: int) -> void:
 	self._set_player_properties(newPlayer)

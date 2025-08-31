@@ -33,7 +33,10 @@ func end_turn() -> void:
 	newPlayer.start_turn()
 	self.player_changed.emit(oldPlayer, self.players[current_player_idx], current_player_idx)
 
-func _on_ready() -> void:
+func next_ship() -> void:
+	self.players[self.current_player_idx].end_current_ship_turn()
+
+func initialize_battle() -> void:
 	self._initialize_players(SkirmisInfo.players_info)
 	# Connect the turn ended event.
 	for player in self.players:

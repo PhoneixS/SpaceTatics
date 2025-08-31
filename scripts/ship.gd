@@ -19,9 +19,9 @@ var selected: bool:
 		return self._selected
 	set(value):
 		if value:
-			ship_selected.emit()
+			self.ship_selected.emit()
 		elif _selected:
-			ship_deselected.emit()
+			self.ship_deselected.emit()
 		_selected = value
 		var spriteResaltado := ($Sprite2D as Sprite2D)
 		spriteResaltado.set_instance_shader_parameter("resaltar", _selected)

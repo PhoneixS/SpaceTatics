@@ -20,4 +20,5 @@ position_smoothing_speed = 10.0
 script = ExtResource("4_yxtji")
 
 [connection signal="ready" from="TurnManager" to="TurnManager" method="_on_ready"]
+[connection signal="next_ship" from="Hud" to="." method="_on_next_ship"]
 [connection signal="turn_ended" from="Hud" to="." method="_on_turn_ended"]

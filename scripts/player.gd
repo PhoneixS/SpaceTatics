@@ -14,11 +14,14 @@ signal turn_ended
 func register_ships(new_ships: Array[Ship]) -> void:
 	ships = new_ships
 	current_index = 0
-	_update_active_ship()
 
 func _update_active_ship() -> void:
 	for i in range(ships.size()):
-		ships[i].active_turn = (i == current_index)
+		ships[i].active_turn = false
+		ships[i].selected = false
+	
+	ships[current_index].active_turn = true
+	ships[current_index].selected = true
 
 func end_current_ship_turn() -> void:
 	self.current_index += 1

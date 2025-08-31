@@ -19,6 +19,13 @@ func _ready() -> void:
 		x = 0
 	
 	self.add_child(grid)
+	
+	$TurnManager.initialize_battle()
+	$Hud.initialize_battle()
 
 func _on_turn_ended() -> void:
 	$TurnManager.end_turn()
+
+
+func _on_next_ship() -> void:
+	$TurnManager.next_ship()
