@@ -8,7 +8,8 @@ var active_turn := false
 var _selected := false
 var space_grid: SpaceGrid
 var destination: Vector2
-var max_distance := 3
+var max_distance := 3.0
+var consumed_distance := 0.0
 var original_position: Vector2
 var move_animation_speed := 1.0
 var move_animation_progress := 0.0
@@ -34,7 +35,7 @@ var selected: bool:
 		return ($ColorTag as Sprite2D).modulate
 
 func is_valid_move(grid_destination: Vector2) -> bool:
-	return (grid_destination - self.space_grid.global_to_grid(self.destination)).length() <= self.max_distance
+	return (grid_destination - self.space_grid.global_to_grid(self.destination)).length() <= (self.max_distance - self.consumed_distance)
 
 func _ready() -> void:
 	self.original_position = self.position
@@ -54,6 +55,7 @@ func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("move_ship") and self.selected:
 		var grid_destination := self.space_grid.global_to_grid(get_global_mouse_position())
 		if self.is_valid_move(grid_destination):
+			self.consumed_distance += (grid_destination - self.space_grid.global_to_grid(self.destination)).length()
 			self.space_grid.move_ship(self, get_global_mouse_position(), true)
 
 func _on_area_2d_input_event(_viewport: Node, event: InputEvent, _shape_idx: int) -> void:
