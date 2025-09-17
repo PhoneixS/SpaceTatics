@@ -10,6 +10,7 @@ var ships: Array[Ship] = []
 var current_index := 0
 
 signal turn_ended
+signal ship_selected(ship: Ship)
 
 func register_ships(new_ships: Array[Ship]) -> void:
 	ships = new_ships
@@ -22,6 +23,7 @@ func _update_active_ship() -> void:
 	
 	ships[current_index].active_turn = true
 	ships[current_index].selected = true
+	self.ship_selected.emit(ships[current_index])
 
 func end_current_ship_turn() -> void:
 	self.current_index += 1

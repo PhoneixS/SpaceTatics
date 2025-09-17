@@ -34,6 +34,11 @@ var selected: bool:
 	get():
 		return ($ColorTag as Sprite2D).modulate
 
+func get_weapons() -> Array[Weapon]:
+	var weapons: Array[Weapon]
+	weapons.assign(self.get_children().filter(func(c): return c.is_in_group("weapons")))
+	return weapons
+
 func is_valid_move(grid_destination: Vector2) -> bool:
 	return (grid_destination - self.space_grid.global_to_grid(self.destination)).length() <= (self.max_distance - self.consumed_distance)
 

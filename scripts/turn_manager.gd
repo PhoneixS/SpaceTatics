@@ -5,6 +5,7 @@ var players: Array[Player] = []
 var current_player_idx = 0
 
 signal player_changed(oldPlayer: Player, newPlayer: Player, newIdx: int)
+signal ship_selected(ship: Ship)
 
 func _initialize_players(new_players: Array[Player]) -> void:
 	self.players = new_players
@@ -41,3 +42,7 @@ func initialize_battle() -> void:
 	# Connect the turn ended event.
 	for player in self.players:
 		player.turn_ended.connect(self.end_turn)
+		player.ship_selected.connect(self._on_ship_selected)
+
+func _on_ship_selected(ship: Ship) -> void:
+	self.ship_selected.emit(ship)

@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://bwnwpvri7l4w1"]
+[gd_scene load_steps=8 format=3 uid="uid://bwnwpvri7l4w1"]
 
 [ext_resource type="Script" uid="uid://bqyrh4r7c8y7l" path="res://scripts/ship.gd" id="1"]
 [ext_resource type="Texture2D" uid="uid://k7eiegj22pru" path="res://recursos/ship.png" id="2_4cq66"]
 [ext_resource type="Shader" uid="uid://bagkquwa4b8hl" path="res://shaders/ship.gdshader" id="2_v4325"]
 [ext_resource type="Texture2D" uid="uid://cunfrin5e3jhd" path="res://recursos/ship_color_mask.png" id="4_gjh3g"]
+[ext_resource type="PackedScene" uid="uid://bptnd4upd3jio" path="res://elements/weapons/laser_cannon.tscn" id="5_75f7w"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_v4325"]
 shader = ExtResource("2_v4325")
@@ -30,6 +31,16 @@ texture = ExtResource("4_gjh3g")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("RectangleShape2D_4cq66")
+
+[node name="Laser1" parent="." groups=["weapons"] instance=ExtResource("5_75f7w")]
+position = Vector2(26, -3)
+scale = Vector2(0.5, 0.5)
+type = "energy"
+
+[node name="Laser2" parent="." groups=["weapons"] instance=ExtResource("5_75f7w")]
+position = Vector2(-29, -3)
+scale = Vector2(0.5, 0.5)
+type = "energy"
 
 [connection signal="ship_deselected" from="." to="." method="_on_ship_deselected"]
 [connection signal="ship_selected" from="." to="." method="_on_ship_selected"]

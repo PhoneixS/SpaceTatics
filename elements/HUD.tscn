@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://c3e7tp3iagm06"]
+[gd_scene load_steps=3 format=3 uid="uid://c3e7tp3iagm06"]
 
 [ext_resource type="Script" uid="uid://baspsd37ntw8p" path="res://scripts/hud.gd" id="1_arym5"]
+[ext_resource type="PackedScene" uid="uid://cdn0watck3k5w" path="res://elements/ship_hud.tscn" id="2_ygjos"]
 
 [node name="Hud" type="CanvasLayer"]
 script = ExtResource("1_arym5")
@@ -34,6 +35,16 @@ alignment = 2
 [node name="NextShip" type="Button" parent="MarginContainer/HBBotton"]
 layout_mode = 2
 text = "Next ship"
+
+[node name="ShipHud" parent="MarginContainer/HBBotton/NextShip" instance=ExtResource("2_ygjos")]
+layout_mode = 0
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = -904.0
+offset_right = -4.0
+offset_bottom = 25.0
+size_flags_horizontal = 3
 
 [node name="EndTurn" type="Button" parent="MarginContainer/HBBotton"]
 layout_mode = 2
