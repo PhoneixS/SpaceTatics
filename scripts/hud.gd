@@ -32,5 +32,7 @@ func _set_player_properties(player: Player) -> void:
 	($MarginContainer/HBTop/PlayerColor as ColorRect).color = player.color
 
 func _on_turn_manager_ship_selected(ship: Ship) ->  void:
+	var weapon_list := $MarginContainer/HBBotton/NextShip/ShipHud/HBoxContainer/PanelContainer2/WeaponsList as ItemList
+	weapon_list.clear()
 	for weapon in ship.get_weapons():
-		$MarginContainer/HBBotton/NextShip/ShipHud/HBoxContainer/PanelContainer2/WeaponsList.add_item(weapon.name)
+		weapon_list.add_item(weapon.name)
